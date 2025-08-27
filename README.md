@@ -1,5 +1,5 @@
 # Customer_Churn_Analysis
-# 📊 Customer Churn Analysis  
+#  Customer Churn Analysis  
 
 ## 📝 Introduction  
 Customer churn is one of the biggest challenges for telecom companies, as it directly impacts revenue and customer growth. This project leverages **SQL, Python, and Power BI** to analyze churn patterns, uncover the key drivers of customer attrition, and provide data-driven recommendations for customer retention.  
@@ -57,22 +57,22 @@ After importing the dataset into **SQL Server** and **Python**:
 This ensured the data was consistent and ready for modeling and visualization.  
 
 
-## 🗂 Data Modeling  
+## Data Modeling  
 - In **SQL**, tables were normalized and transformed into a **star schema** for easier querying.  
 - In **Power BI**, relationships were built between customer details, services, and revenue metrics.  
 - Calculated columns and DAX measures were created, including:  
 
-```DAX
+DAX
 Churn Rate = DIVIDE([Total Churned Customers], [Total Customers])
 
 Avg Monthly Revenue (Churned) =
     AVERAGEX(
         FILTER(Customers, Customers[Status] = "Churned"),
         Customers[Monthly_Charge]
-    )```
+    )
 
 
-## 📊 Data Visualization (Power BI Dashboard)
+##  Data Visualization (Power BI Dashboard)
 
 The **Power BI dashboard** was designed with the following sections:
 
@@ -83,11 +83,11 @@ The **Power BI dashboard** was designed with the following sections:
 - **Account Details**: Churn by Contract Type and Payment Method.  
 - **Churn Reasons**: Top categories and detailed reasons for churn.  
 
-📷 *Dashboard screenshots are available in the repository.*  
+ *Dashboard screenshots are available in the repository.*  
 
 
 
-## 🔑 Insights  
+##  Insights  
 
 Key findings from the analysis include:  
 
