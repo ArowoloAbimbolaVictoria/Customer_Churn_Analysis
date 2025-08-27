@@ -69,7 +69,8 @@ Avg Monthly Revenue (Churned) =
     AVERAGEX(
         FILTER(Customers, Customers[Status] = "Churned"),
         Customers[Monthly_Charge]
-    )
+    )```
+
 
 ## 📊 Data Visualization (Power BI Dashboard)
 
