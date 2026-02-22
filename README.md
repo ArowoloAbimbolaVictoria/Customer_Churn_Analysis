@@ -1,68 +1,68 @@
-# Customer_Churn_Analysis
-#  Customer Churn Analysis  
+# Customer Churn Analysis 
 
-## 📝 Introduction  
-Customer churn is one of the biggest challenges for telecom companies, as it directly impacts revenue and customer growth. This project leverages **SQL, Python, and Power BI** to analyze churn patterns, uncover the key drivers of customer attrition, and provide data-driven recommendations for customer retention.  
-
-By analyzing customer demographics, services subscribed, billing methods, and churn reasons, this project supports strategic decision-making aimed at reducing churn and increasing customer loyalty.  
-  
-
-## 🛠 Skills Demonstrated  
-- Data Cleaning and Preparation (**SQL & Python**)  
-- Data Modeling (**SQL & Power BI**)  
-- DAX Calculations and KPIs (**Power BI**)  
-- Interactive Dashboard Design (**Power BI**)  
-- Exploratory Data Analysis (**Python**)  
-- Machine Learning (**Python, scikit-learn**)  
-- Storytelling with Data  
-- Critical Thinking and Business Insight Generation  
-
----
-
-## 📂 Data Sourcing  
-The dataset was sourced from **Kaggle** and contains one main file:  
-
-- **Churn Data**: Customer demographics, account details, subscribed services, payment methods, revenue metrics, and churn labels.  
-
-**Size:** ~7,000+ rows × 30+ columns  
-
-**Key Fields:**  
-- Customer_ID, Gender, Age, State  
-- Tenure_in_Months, Contract, Payment_Method  
-- Internet_Type, Phone_Service, Streaming_Services  
-- Monthly_Charge, Total_Revenue  
-- Customer_Status, Churn_Category, Churn_Reason  
+**Tools:** SQL · Python · Power BI · scikit-learn  
+**Domain:** Customer Analytics · Predictive Modeling · Business Intelligence  
+**Dataset:** ~7,000+ customers · 30+ features · Sourced from Kaggle
 
 
-## ❓ Problem Statement  
-This analysis sought to address the following questions:  
-1. What is the overall churn rate and revenue impact?  
-2. Which customer segments are most likely to churn?  
-3. How do contract type, internet service, and payment method influence churn?  
-4. What are the most common churn categories and reasons?  
-5. What demographic factors (age, gender, marital status, state) correlate with churn?  
-6. Can we build a predictive model to identify customers at risk of churn?  
+## Project Summary
+
+Telecom companies lose significant revenue every time a customer churns. This project delivers a **full-stack churn analysis** - from raw data cleaning in SQL, through exploratory analysis and machine learning in Python, to an interactive Power BI dashboard - to help business stakeholders understand *who* is churning, *why*, and *what to do about it*.
+
+**Key outcomes:**
+- Identified that **month-to-month contract customers churn significantly more** than long-term contract holders
+- Found **fiber optic users and electronic check payers** as highest-risk segments
+- Built a **Random Forest model with ~80% accuracy** to flag at-risk customers before they leave
+- Delivered actionable retention recommendations across contract, payment, and service dimensions
 
 
-## 🧹 Data Cleaning  
-After importing the dataset into **SQL Server** and **Python**:  
-- Removed duplicates and handled missing values.  
-- Fixed invalid records (e.g., negative charges).  
-- Standardized categorical variables (Yes/No → 1/0).  
-- Created derived fields for better segmentation:  
-  - **Tenure Group** (0–12 months, 13–24, etc.)  
-  - **Monthly Charge Band**  
-  - **Churn Flag** (binary indicator for churn).  
+## The Business Problem
 
-This ensured the data was consistent and ready for modeling and visualization.  
+Customer churn is one of the costliest challenges in the telecom industry. Every lost customer represents not just lost monthly revenue, but the full lifetime value of that relationship.
+
+This project set out to answer six core business questions:
+
+1. What is the overall churn rate and its revenue impact?
+2. Which customer segments are most likely to churn?
+3. How do contract type, internet service, and payment method influence churn?
+4. What are the most common reasons customers leave?
+5. What demographic factors (age, gender, location) correlate with churn?
+6. Can we predict which customers are at risk *before* they churn?
 
 
-## Data Modeling  
-- In **SQL**, tables were normalized and transformed into a **star schema** for easier querying.  
-- In **Power BI**, relationships were built between customer details, services, and revenue metrics.  
-- Calculated columns and DAX measures were created, including:  
+## Dataset Overview
 
-DAX
+Sourced from **Kaggle** - one main file containing customer demographics, account details, subscribed services, payment methods, revenue metrics, and churn labels.
+
+| Field | Description |
+|---|---|
+| `Customer_ID`, `Gender`, `Age`, `State` | Customer demographics |
+| `Tenure_in_Months`, `Contract` | Account history and commitment level |
+| `Internet_Type`, `Phone_Service`, `Streaming_Services` | Services subscribed |
+| `Monthly_Charge`, `Total_Revenue` | Billing information |
+| `Customer_Status`, `Churn_Category`, `Churn_Reason` | Churn outcome and reason |
+
+
+## Data Cleaning (SQL & Python)
+
+Raw data was imported into **SQL Server** for initial cleaning, then passed to **Python** for further preparation:
+
+- Removed duplicates and resolved missing values
+- Removed invalid records (e.g., negative charges)
+- Standardized categorical variables (`Yes/No` → `1/0`)
+- Engineered new features for better segmentation:
+  - **Tenure Group** — bucketed into 0–12, 13–24, 25–36, 36+ months
+  - **Monthly Charge Band**  low, medium, high tiers
+  - **Churn Flag** - binary indicator (1 = churned, 0 = retained)
+
+
+## Data Modeling
+
+**In SQL**, data was normalized and structured into a **star schema** - a central fact table for customer records linked to dimension tables for services, demographics, and billing.
+
+**In Power BI**, relationships were built between tables and the following DAX measures were created:
+
+```dax
 Churn Rate = DIVIDE([Total Churned Customers], [Total Customers])
 
 Avg Monthly Revenue (Churned) =
@@ -70,62 +70,97 @@ Avg Monthly Revenue (Churned) =
         FILTER(Customers, Customers[Status] = "Churned"),
         Customers[Monthly_Charge]
     )
+```
 
 
-##  Data Visualization (Power BI Dashboard)
+## Power BI Dashboard
 
-The **Power BI dashboard** was designed with the following sections:
+The interactive dashboard was structured across six views:
 
-- **Overview Page**: Total Customers, Churned Customers, Churn Rate, Total Revenue.  
-- **Demographics**: Churn by Gender, Age Group, Marital Status.  
-- **Geography**: Churn by State.  
-- **Services**: Churn by Internet Type, Phone Service, and Streaming Services.  
-- **Account Details**: Churn by Contract Type and Payment Method.  
-- **Churn Reasons**: Top categories and detailed reasons for churn.  
-
- *Dashboard screenshots are available in the repository.*  
-
-
-
-##  Insights  
-
-Key findings from the analysis include:  
-
-- Customers on **month-to-month contracts** churned significantly more than those on yearly contracts.  
-- **Fiber optic customers** had a higher churn rate compared to cable users.  
-- Customers paying via **electronic check** were more likely to churn compared to those using credit cards or bank transfers.  
-- **Competitor offers** were the top churn reason, followed by dissatisfaction with devices and service issues.  
-- Customers with **longer tenure showed greater loyalty**, while newer customers were more likely to leave.  
+| Page | Content |
+|---|---|
+| **Overview** | Total Customers, Churn Rate, Revenue at Risk |
+| **Demographics** | Churn by Gender, Age Group, Marital Status |
+| **Geography** | Churn rate by State (map visual) |
+| **Services** | Churn by Internet Type, Phone & Streaming Services |
+| **Account Details** | Churn by Contract Type and Payment Method |
+| **Churn Reasons** | Top churn categories and granular reasons |
 
 
 
-## 💡 Recommendations  
+## Key Insights
 
-Based on the analysis, the following actions are recommended:  
-
-- **Contract Strategy**: Incentivize long-term contracts with discounts or perks.  
-- **Service Quality**: Improve fiber optic reliability and device support.  
-- **Payment Options**: Promote credit card and bank transfer payments.  
-- **Customer Retention Programs**: Launch loyalty rewards for new customers within their first year.  
-- **Competitive Benchmarking**: Monitor competitor offers closely and adjust bundles/pricing.  
-
-
-
-## 🤖 Machine Learning (Python)  
-
-A **Random Forest Classifier** was trained to predict churn likelihood.  
-
-- **Accuracy**: ~80%  
-- **Key Predictors**: Contract Type, Tenure, Payment Method, Internet Type, Monthly Charges.  
-
-The model highlights **at-risk customers**, enabling proactive retention campaigns.  
+| Finding | Implication |
+|---|---|
+| Month-to-month customers churn at the highest rate | Long-term contracts drive retention |
+| Fiber optic users churn more than cable users | Service quality issues need addressing |
+| Electronic check payers are the highest-risk payment group | Auto-pay promotion could reduce churn |
+| Competitor offers are the #1 churn reason | Pricing and bundle competitiveness is critical |
+| Customers with shorter tenure are most at risk | Early engagement programs are essential |
 
 
 
-## ✅ Conclusion  
+## Recommendations
 
-This churn analysis project provides actionable insights to **reduce customer attrition** and improve retention strategies.  
+**1. Contract Strategy**
+Offer discounts or perks (free months, device upgrades) to incentivize customers to move from month-to-month to annual contracts — the single highest-impact retention lever found in this analysis.
 
-By combining **SQL for data cleaning**, **Python for predictive analytics**, and **Power BI for interactive dashboards**, the project demonstrates the full potential of **data-driven decision-making in the telecom industry**.  
+**2. Service Quality**
+Invest in fiber optic reliability improvements and device support. Dissatisfaction with devices was the second most common churn reason.
+
+**3. Payment Method**
+Actively promote credit card or bank transfer auto-pay. Electronic check users show disproportionately high churn — friction in payment may signal lower engagement overall.
+
+**4. Early Retention Programs**
+New customers (0–12 months tenure) are the most vulnerable. A structured onboarding and loyalty program in the first year could significantly reduce early churn.
+
+**5. Competitive Intelligence**
+Competitor offers are the #1 reason customers leave. Regular benchmarking of competitor pricing and bundle offerings should inform product strategy.
 
 
+## Machine Learning — Churn Prediction (Python)
+
+A **Random Forest Classifier** was trained to identify customers at risk of churning before they leave.
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+```
+
+**Results:**
+
+| Metric | Score |
+|---|---|
+| Accuracy | ~80% |
+| Top Predictors | Contract Type, Tenure, Payment Method, Internet Type, Monthly Charges |
+
+The model outputs a **churn probability score per customer**, enabling the retention team to prioritize outreach to highest-risk accounts before they cancel.
+
+*Add feature importance chart here:*
+![Feature Importance](assets/feature-importance.png)
+
+
+##  Skills Demonstrated
+
+| Area | Detail |
+|---|---|
+| Data Cleaning | SQL Server, Python (pandas), handling nulls, type standardization |
+| Data Modeling | Star schema design, Power BI relationships, DAX measures |
+| Visualization | Interactive Power BI dashboard across 6 analytical views |
+| Exploratory Analysis | Python (matplotlib, seaborn), segment profiling |
+| Machine Learning | Random Forest, feature engineering, scikit-learn pipeline |
+| Business Thinking | Translated findings into 5 concrete retention recommendations |
+
+
+## Conclusion
+
+This project demonstrates the full data analytics workflow - from messy raw data to boardroom-ready recommendations. By combining **SQL for data engineering**, **Python for predictive modeling**, and **Power BI for business storytelling**, it shows how data-driven thinking can directly support customer retention strategy in a competitive industry.
+
+
+*Dataset sourced from [Kaggle]
