@@ -295,7 +295,7 @@ The model output (`Predictions.csv`) was loaded back into Power BI for a dedicat
 | **Account Info** | By Payment Method · Contract Type · Tenure Group |
 | **Geography** | Predicted Churn Count by State |
 
-![Churn Predictions](assets/churn_predictions.jpg)
+![Churn Predictions](assets/churn_prediction.jpg)
 
 
 ## Key Insights
