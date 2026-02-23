@@ -4,6 +4,8 @@
 **Domain:** Customer Analytics · ETL Pipeline · Predictive Modeling · Business Intelligence  
 **Dataset:** ~7,000+ customers · 30+ features · Sourced from Kaggle
 
+![Dashboard Summary](assets/Churn_dashboard1.jpg)
+
 ## Project Summary
 
 This is a **full end-to-end data analytics project** covering every stage of the analytics workflow — from raw data ingestion in SQL Server, through Power BI dashboard design, to a machine learning model that predicts *future* churners before they leave.
@@ -187,14 +189,14 @@ Title Predicted Churners =
 | **Churn Distribution** | Churn by Category with tooltip showing detailed reasons |
 | **Services** | Churn Rate by Internet Type · All services unpivoted view |
 
-*Add dashboard summary screenshot here:*
-![Dashboard Summary](assets/dashboard-summary.png)
+![Dashboard Summary](assets/Churn_dashboard1.jpg)
+
+![Dashboard Page 2](assets/Dashbrd2.jpg)
 
 ### Page 2 — Churn Reasons (Tooltip)
 A tooltip page showing granular churn reasons — appears on hover over the Churn Category visual on the Summary page.
 
-*Add churn reasons screenshot here:*
-![Churn Reasons](assets/churn-reasons.png)
+![Churn Reasons](assets/churn_reason.jpg)
 
 
 ## STEP 5 — Churn Prediction Model (Python)
@@ -268,9 +270,6 @@ plt.xlabel('Relative Importance')
 plt.show()
 ```
 
-*Add feature importance chart here:*
-![Feature Importance](assets/feature-importance.png)
-
 ### Predict on New Customers & Export
 ```python
 # Run model on new joiners
@@ -296,8 +295,7 @@ The model output (`Predictions.csv`) was loaded back into Power BI for a dedicat
 | **Account Info** | By Payment Method · Contract Type · Tenure Group |
 | **Geography** | Predicted Churn Count by State |
 
-*Add prediction page screenshot here:*
-![Churn Prediction Page](assets/churn-prediction.png)
+![Churn Predictions](assets/churn_predictions.jpg)
 
 
 ## Key Insights
@@ -377,9 +375,6 @@ model.fit(X_train, y_train)
 | Top Predictors | Contract Type, Tenure, Payment Method, Internet Type, Monthly Charges |
 
 The model outputs a **churn probability score per customer**, enabling the retention team to prioritize outreach to highest-risk accounts before they cancel.
-
-*Add feature importance chart here:*
-![Feature Importance](assets/feature-importance.png)
 
 
 ## Conclusion
